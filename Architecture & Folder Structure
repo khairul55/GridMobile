@@ -1,0 +1,67 @@
+/src
+  /assets
+    /fonts
+    /icons
+  /components
+    /common
+      Button.tsx
+      Input.tsx
+      Modal.tsx
+    /grid
+      Spreadsheet.tsx
+      VirtualGrid.tsx
+      Cell.tsx
+      HeaderRow.tsx
+      RowNumberColumn.tsx
+      FormulaBar.tsx
+      Toolbar.tsx
+    /charts
+      ChartRenderer.tsx
+  /config
+    firebase.ts
+    theme.ts
+    constants.ts
+  /hooks
+    useAuth.ts
+    useSpreadsheetLogic.ts
+    useKeyboard.ts
+    useSelection.ts
+  /navigation
+    AppNavigator.tsx
+    AuthNavigator.tsx
+  /screens
+    HomeScreen.tsx
+    WorkbookScreen.tsx
+    LoginScreen.tsx
+    AdminDashboard.tsx
+  /services
+    /auth
+      authService.ts
+    /cloud
+      firestoreService.ts
+      storageService.ts
+    /local
+      sqliteService.ts
+    /engine
+      FormulaEngine.ts
+      DependencyGraph.ts
+      formatters.ts
+    /sync
+      SyncQueue.ts
+  /store
+    store.ts
+    /slices
+      workbookSlice.ts
+      uiSlice.ts
+      authSlice.ts
+  /types
+    index.ts
+  /utils
+    clipboard.ts
+    helpers.ts
+    validation.ts
+App.tsx
+app.json
+babel.config.js
+tsconfig.json
+firestore.rules
