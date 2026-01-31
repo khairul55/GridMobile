@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Functions to check roles
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(resource) {
+      return resource.data.ownerId == request.auth.uid;
+    }
+    
+    function isCollaborator(resource) {
+      return request.auth.uid in resource.data.collaborators;
+    }
+
+    match /users/{userId} {
+      allow read, write: if request.auth.uid == userId;
+    }
+
+    match /workbooks/{workbookId} {
+      // Create: Must be signed in
+      allow create: if isSignedIn();
+      
+      // Read/Write: Must be owner or added as collaborator
+      allow read, write: if isSignedIn() && (isOwner(resource) || isCollaborator(resource));
+      
+      // Delete: Only owner
+      allow delete: if isSignedIn() && isOwner(resource);
+    }
+  }
+}
